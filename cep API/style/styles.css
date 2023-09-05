@@ -1,0 +1,116 @@
+*{
+    padding:0;
+    margin:0;
+    box-sizing: border-box;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+}
+
+body{
+    display: flex;
+    height:100vh;
+    justify-content: center;
+    align-items:center;
+    flex-direction: column;
+    background-image: url(/imgs/wallpaper.avif);
+    background-repeat:no-repeat;
+    background-size:cover;
+}
+
+.glassContainer{
+    border:2px solid red;
+    width:600px;
+    border-radius:20px;
+    height:450px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+    backdrop-filter: blur;
+    -webkit-backdrop-filter: blur(10px);
+    border:1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 9px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+.title{
+    padding:15px;
+    border-radius:20px;
+    width:40%;
+    margin:30px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+    backdrop-filter: blur;
+    -webkit-backdrop-filter: blur(10px);
+    border:1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 9px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+.title h2{
+    font-size:24px;
+    color:white;
+    font-weight:lighter;
+    text-align: center;
+}
+
+input{
+    border:none;
+    width:100%;
+    font-size:14px;
+    color:#ffffff;
+    background-color: transparent;
+    font-weight:lighter;
+    border-bottom:1px solid rgba(255, 255, 255, 0.18); 
+}
+
+input[type=number]::-webkit-inner-spin-button { 
+    -webkit-appearance: none;
+}
+
+input:focus {
+    box-shadow: 0 0 0 0;
+    outline: 0;
+}
+
+
+.inputDiv{
+    border-radius:7px;
+    margin:15px;
+    display:flex;
+    flex-direction: column;
+    width:550px;
+    padding:5px 10px;
+}
+
+
+.consultaCep{
+    background-color: transparent;
+    border:none;
+    width:40px;
+    height:35px;
+    color:white;
+    display:inline;
+    margin-left:10px;
+}
+
+.consultaCep:hover{
+    border:1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 9px 32px 0 rgba(0, 0, 0, 0.37);
+    border-radius:5px;  
+}
+
+
+.inputDiv label{
+    font-size:14px;
+    color:white;
+    font-weight:lighter;
+    margin-bottom:5px;
+}
+
+.btnAndInput{
+    display:flex;
+    align-items: center;
+
+}
+
+.alert{
+    color:red;
+}
+

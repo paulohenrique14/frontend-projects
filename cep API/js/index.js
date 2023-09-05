@@ -4,6 +4,8 @@ const bairroInput    = document.querySelector("#bairro");
 const cidadeInput    = document.querySelector("#localidade");
 const estadoInput    = document.querySelector("#uf");
 const btnConsultaCep = document.querySelector("#consultaCep");
+const addressForm    = document.querySelector(".addressForm")
+const lblCep         = document.querySelector("#lblCep")
 
 const url = "https://viacep.com.br/ws/";
 
@@ -14,23 +16,63 @@ async function getEndereco(){
     }).catch((err) =>{
         console.log(`Aconteceu o seguinte erro: ${err}`)
     })
-
-    console.log(data)
 }
 
 btnConsultaCep.addEventListener("click", (e) =>{
     e.preventDefault()
-    showEndereco();
+    let valorCep = cepInput.value;
+    if (valorCep.replace(/\s/g, '').length === 8) {
+        showEndereco();
+    }else{
+        verificacao();
+         
+    }
+
+    console.log(valorCep.replace(/\s/g, '').length)
+    
     
 })
 
 async function showEndereco(){
      const endereco = await getEndereco();
 
-     ruaInput.value    = endereco.logradouro
-     bairroInput.value = endereco.bairro
-     cidadeInput.value = endereco.localidade
-     estadoInput.value = endereco.uf
+     if (endereco.logradouro !== undefined){
+        ruaInput.value    = endereco.logradouro
+        bairroInput.value = endereco.bairro
+        cidadeInput.value = endereco.localidade
+        estadoInput.value = endereco.uf
+     }else{
+        verificacao();
+     }
+
+     console.log(endereco.logradouro)
+
+
 
 }
 
+// let pesquisaCep = () =>{
+//     let valorCep = cepInput.value;
+
+//     if (valorCep.replace(/\s/g, '').length === 8){
+//         showEndereco();
+//     }
+// }
+
+// cepInput.addEventListener('keyup', () =>{
+//     console.log('acarcado')
+//     pesquisaCep();
+// })
+
+let verificacao = () => {
+    lblCep.textContent = 'Favor digitar o cep corretamente'
+        setTimeout(() => {
+            lblCep.textContent = 'Digite o seu CEP'   
+        }, 2500);
+
+    cepInput.value = '' 
+    ruaInput.value    = '';
+    bairroInput.value = '';
+    cidadeInput.value = '';
+    estadoInput.value = '';
+}
