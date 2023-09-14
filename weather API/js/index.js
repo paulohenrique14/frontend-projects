@@ -19,23 +19,37 @@ const urlFlag    = "https://flagsapi.com/";
 
 async function getWeather(city) {
     const urlWeather = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${urlWeatherKey}&lang=pt_br`;
-    const response = await fetch(urlWeather);
-    const data = await response.json()
-    return data;    
+    try{ 
+        const response = await fetch(urlWeather);
+        const data = await response.json()
+        return data;    
+    } catch (err) {
+        console.log('erro ' +err)
+        return null
+    }
+    
 }
 
 async function showWeather(city) {
     const data = await getWeather(city);
+    
     console.log(data)
-    iconWeather = data.weather[0].icon
-    cityIconWeather.setAttribute("src", "http://openweathermap.org/img/wn/"+iconWeather+".png")
-    flag = data.sys.country
-    flagCountry.setAttribute("src", "https://flagsapi.com/"+flag+"/flat/32.png") 
-    cityName.textContent = data.name;
-    cityHumidity.textContent = data.main.humidity
-    cityTemperature.textContent = data.main.temp
-    cityDescription.textContent = data.weather[0].description
-    cityWind.textContent = data.wind.speed
+    if (data.message){
+        console.log('erro') 
+    }else{
+        console.log(data.message)
+        iconWeather = data.weather[0].icon
+        cityIconWeather.setAttribute("src", "http://openweathermap.org/img/wn/"+iconWeather+".png")
+        flag = data.sys.country
+        flagCountry.setAttribute("src", "https://flagsapi.com/"+flag+"/flat/32.png") 
+        cityName.textContent = data.name;
+        cityHumidity.textContent = data.main.humidity
+        cityTemperature.textContent = data.main.temp
+        cityDescription.textContent = data.weather[0].description
+        cityWind.textContent = data.wind.speed
+    }   
+    
+  
 }
 
 btnSearch.addEventListener("click", (e) =>{
@@ -43,4 +57,3 @@ btnSearch.addEventListener("click", (e) =>{
     const city = cityInput.value;
     showWeather(city)
 })
-
