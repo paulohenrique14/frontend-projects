@@ -35,9 +35,13 @@ async function showWeather(city) {
     
     console.log(data)
     if (data.message){
-        console.log('erro') 
+        cityInput.value = 'Digite corretamente o nome da cidade'
+        cityInput.setAttribute('readonly', true)
+        setTimeout(() =>{
+            cityInput.value = ''
+            cityInput.readOnly = false;
+        }, 2000)
     }else{
-        console.log(data.message)
         iconWeather = data.weather[0].icon
         cityIconWeather.setAttribute("src", "http://openweathermap.org/img/wn/"+iconWeather+".png")
         flag = data.sys.country
