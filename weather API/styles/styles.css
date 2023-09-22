@@ -21,7 +21,7 @@ body{
     align-items: center;
     justify-content:space-around;
     width:50%;
-    height:450px;
+    padding:20px 0 40px 0;
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border-radius: 20px;
@@ -35,6 +35,9 @@ body{
     margin-bottom:-35px;
 }
 
+#hide{
+    display:none;
+}
 
 
 .form h3{
@@ -88,21 +91,17 @@ body{
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
 }
 
-.hide{
-    display:none;
-    transition: all 2s ease-in-out;
-
-}
 
 .weather-data{
     border-top:2px solid rgba(255, 255, 255, 0.18);
-    width:90%;
-    height:65%;
+    width:100%;
+    margin-top:50px;
+    height:100%;
     display:flex;
     flex-direction: column;
     align-items: center;
     justify-content:space-around;
-    transition: all 2s ease-in-out;
+    
 }
 
 
@@ -114,7 +113,9 @@ body{
     display: flex;
     justify-content: space-around;
     align-items: center;
+    margin-top:25px;
     font-weight: 100;
+    font-size:30px;
     
 }
 

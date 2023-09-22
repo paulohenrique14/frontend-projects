@@ -12,10 +12,8 @@ const weatherIcon     = document.querySelector(".weather-icon");
 const flagCountry     = document.querySelector("#country")
 const teste           = document.querySelector(".weather-data");
 
-
 const urlWeatherKey = "ab92096a006202a68387ea03a0083256"
 const urlFlag    = "https://flagsapi.com/";
-
 
 async function getWeather(city) {
     const urlWeather = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${urlWeatherKey}&lang=pt_br`;
@@ -27,7 +25,6 @@ async function getWeather(city) {
         console.log('erro ' +err)
         return null
     }
-    
 }
 
 async function showWeather(city) {
@@ -42,6 +39,7 @@ async function showWeather(city) {
             cityInput.readOnly = false;
         }, 2000)
     }else{
+        teste.removeAttribute("id")
         iconWeather = data.weather[0].icon
         cityIconWeather.setAttribute("src", "http://openweathermap.org/img/wn/"+iconWeather+".png")
         flag = data.sys.country
@@ -51,9 +49,7 @@ async function showWeather(city) {
         cityTemperature.textContent = data.main.temp
         cityDescription.textContent = data.weather[0].description
         cityWind.textContent = data.wind.speed
-    }   
-    
-  
+    }    
 }
 
 btnSearch.addEventListener("click", (e) =>{
